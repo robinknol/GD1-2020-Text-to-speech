@@ -15,37 +15,47 @@ let synth = window.speechSynthesis; // init speech synthesizer
 let voices = []; // array vande voices beschikbaar in de browser
 
 
-inputForm.onsubmit = function(event) {
+inputForm.onsubmit = function(event)
+{
     event.preventDefault();
     sayTheWord(inputTxt.value);
 }
+
 play.addEventListener('click', () => {sayTheWord(inputTxt.value);});
+play2.addEventListener('click', () => {sayTheWord(textArray);});
 pause.addEventListener('click', () => {synth.pause();});
 resume.addEventListener('click', () => {synth.resume();});
 
-
-function populateVoiceList() {
+function populateVoiceList()
+{
     voices = synth.getVoices();
-    for(i = 0; i < voices.length ; i++) {
+    for(i = 0; i < voices.length ; i++)
+    {
         let option = document.createElement('option');
         option.textContent = voices[i].name + ' (' + voices[i].lang + ')';
         option.setAttribute('data-lang', voices[i].lang);
         option.setAttribute('data-name', voices[i].name);
         voiceSelect.appendChild(option);
     }
-    }
+}
+
 populateVoiceList();
-if (speechSynthesis.onvoiceschanged !== undefined) {
+
+if (speechSynthesis.onvoiceschanged !== undefined)
+{
     speechSynthesis.onvoiceschanged = populateVoiceList;
 }
 
-function sayTheWord(theseWords){
+function sayTheWord(theseWords)
+{
     synth.cancel(); // reset de speech synthesizer
     let magicWords = new SpeechSynthesisUtterance(theseWords);
     let selectedOption = voiceSelect.selectedOptions[0].getAttribute('data-name');
-    for(i = 0; i < voices.length ; i++) {
-        if(voices[i].name === selectedOption) {
-        magicWords.voice = voices[i];
+    for(i = 0; i < voices.length ; i++)
+    {
+        if(voices[i].name === selectedOption)
+        {
+            magicWords.voice = voices[i];
         }
     }
 
@@ -53,10 +63,20 @@ function sayTheWord(theseWords){
     magicWords.rate = rate.value;
     synth.speak(magicWords);
 }
-pitch.onchange = function() {
-        pitchValue.textContent = pitch.value;
-        }
 
-rate.onchange = function() {
+pitch.onchange = function()
+{
+    pitchValue.textContent = pitch.value;
+}
+
+rate.onchange = function()
+{
     rateValue.textContent = rate.value;
-    }
+}
+const textArray = 
+[   
+    'My son.',
+    ' The day you were born the very forests of Lordaeron whispered the name.',
+    ' .....',
+    ' Arthas'
+];
