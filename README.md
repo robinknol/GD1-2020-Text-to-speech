@@ -1,3 +1,3 @@
 # GD1-2020-Text-to-speech
 ## Text to speech synthesizer API
-Link naar de demo: [http://schw.hosts1.ma-cloud.nl/2020/text2speech/](http://schw.hosts1.ma-cloud.nl/2020/text2speech/)
+Link naar de demo: http://28095.hosts2.ma-cloud.nl/bewijzenmap/periode1.4/GD1-2020-Text-to-speech-master/text2speech1.html
